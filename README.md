@@ -1,4 +1,6 @@
 ## TETACOM .NET opensource NuGet packages
+![master build status](https://github.com/tetacom-software/Teta.Net.Packages/actions/workflows/dotnet-core.yml/badge.svg?branch=master)
+![dotnet](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
 
 This set of  libraries will help you start new .NET Core web api project with common-used application-design patterns 
 
