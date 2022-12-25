@@ -5,6 +5,17 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>Teta.Packages.UoW.EfCore</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Tetacom unit of work implementation</Title>
+        <Description>Unit of Work is a design pattern that allows a single transaction to manage multiple database operations. It is a common pattern used in enterprise applications to ensure that database changes are consistent and atomic.
+
+The Unit of Work NuGet package created by Tetacom company is a library that provides a simple and easy-to-use implementation of the Unit of Work pattern for .NET applications. It can be used to manage database transactions and ensure that database changes are consistent and atomic across multiple database operations.</Description>
+        <Copyright>TETACOM</Copyright>
+        <PackageProjectUrl>https://github.com/deadokman/Teta.Packages.NuGet</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/deadokman/Teta.Packages.NuGet</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>Unit of Work, EfCore</PackageTags>
+        <PackageReleaseNotes>Basic unit of work implementation with repository pattern,</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>

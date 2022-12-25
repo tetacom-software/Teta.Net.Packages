@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cc02a60-fef9-4e72-9120-6f1ed0d6a7d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Packages/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UoW/Teta.Packages.UoW.EfCore.Interfaces/BusinessEntity/IBusinessEntity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UoW/Teta.Packages.UoW.EfCore.Interfaces/Teta.Packages.UoW.EfCore.Interfaces.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UoW/Teta.Packages.UoW.EfCore/Business/FactoryBasedGenericRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UoW/Teta.Packages.UoW.EfCore/Business/GenericRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UoW/Teta.Packages.UoW.EfCore/Business/GenericRepositoryFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UoW/Teta.Packages.UoW.EfCore/Business/UnitOfWork.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UoW/Teta.Packages.UoW.EfCore/Teta.Packages.UoW.EfCore.csproj" afterDir="false" />
-    </list>
+    <list default="true" id="2cc02a60-fef9-4e72-9120-6f1ed0d6a7d6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671971916135</updated>
       <workItem from="1671971918245" duration="410000" />
-      <workItem from="1671972422489" duration="2525000" />
+      <workItem from="1671972422489" duration="2857000" />
     </task>
     <servers />
   </component>
