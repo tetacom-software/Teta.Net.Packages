@@ -22,13 +22,10 @@ jobs:
         uses: actions/setup-dotnet@v1
        
       - name: Restore solution file
-        run: dotnet restore --verbosity m ./Source/Packages/Teta.Packages.sln 
+        run: dotnet restore --verbosity m Source/Packages/Teta.Packages.sln 
                
       - name: Build solution file
-        run: dotnet build -c release --verbosity m ./Source/Packages/Teta.Packages.sln
-        
-      - name: Pack solution file
-        run: dotnet pack -c release -o out ./Source/Packages/Teta.Packages.sln
+        run: dotnet build -c release --verbosity m Source/Packages/Teta.Packages.sln
         
       - name: publish Teta.Packages.UoW.EfCore
         id: publish_Teta_Packages_UoW_EfCore
