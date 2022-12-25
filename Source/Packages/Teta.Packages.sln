@@ -7,6 +7,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UoW.EfCore.Interfaces", "UoW\Teta.Packages.UoW.EfCore.Interfaces\Teta.Packages.UoW.EfCore.Interfaces.csproj", "{CF203601-89E4-46B2-B40C-710355E41159}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfCore", "EfCore", "{9C35BE0B-3B6D-4565-A9D0-F657124D4039}"
+	ProjectSection(SolutionItems) = preProject
+		UoW\Dockerfile = UoW\Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

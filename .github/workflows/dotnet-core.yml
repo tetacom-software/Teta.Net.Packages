@@ -10,27 +10,14 @@ on:
       - master
 
 jobs:
-  build:
-    runs-on: ubuntu-18.04
-    name: Update NuGet package
+jobs:
+  docker:
+    runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v1
-
-      - name: Setup .NET Core @ Latest
-        uses: actions/setup-dotnet@v1
-       
-      - name: Restore solution file
-        run: dotnet restore --verbosity m Source/Packages/Teta.Packages.sln 
-               
-      - name: Build solution file
-        run: dotnet build -c release --verbosity m Source/Packages/Teta.Packages.sln
-        
-      - name: publish Teta.Packages.UoW.EfCore
-        id: publish_Teta_Packages_UoW_EfCore
-        uses: alirezanet/publish-nuget@v3.0.3
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: Source/Packages/UoW/Teta.Packages.UoW.EfCore/Teta.Packages.UoW.EfCore.csproj
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+    - name: Build nuget via docker and publish
+      uses: docker/build-push-action@v2
+      with:
+        context: ./Source/Packages/UoW
+        push: false
+        tags: nugetbuild:latest
+        build-args: NUGET_KEY=${{secrets.NUGET_API_KEY}}

@@ -10,4 +10,4 @@ COPY . .
 RUN dotnet restore 
 RUN dotnet build -c Release --no-restore  
 RUN dotnet pack -c Release --no-restore --no-build -o /out/artifacts
-RUN dotnet dotnet nuget push /out/artifacts/*.nupkg --source $NUGET_URL --api-key $NUGET_KEY
+RUN dotnet dotnet nuget push /out/artifacts/*.nupkg --skip-duplicate --source $NUGET_URL --api-key $NUGET_KEY
