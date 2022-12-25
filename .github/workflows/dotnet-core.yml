@@ -21,7 +21,7 @@ jobs:
     - name: Build Unit of work nuget via docker and publish
       uses: docker/build-push-action@v2
       with:
-        context: /Source/Packages/UoW
+        context: ./Source/Packages
         push: false
         tags: nugetbuild:latest
         build-args: NUGET_KEY=${{secrets.NUGET_API_KEY}}
