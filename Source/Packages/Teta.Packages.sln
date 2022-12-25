@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UoW", "UoW", "{40FC62FA-654D-4043-8F24-E91D098F48E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UoW.EfCore", "UoW\Teta.Packages.UoW.EfCore\Teta.Packages.UoW.EfCore.csproj", "{0FEB73F7-0C08-4267-8AC0-809C931E25CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UoW.EfCore.Interfaces", "UoW\Teta.Packages.UoW.EfCore.Interfaces\Teta.Packages.UoW.EfCore.Interfaces.csproj", "{CF203601-89E4-46B2-B40C-710355E41159}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfCore", "EfCore", "{9C35BE0B-3B6D-4565-A9D0-F657124D4039}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FEB73F7-0C08-4267-8AC0-809C931E25CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FEB73F7-0C08-4267-8AC0-809C931E25CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FEB73F7-0C08-4267-8AC0-809C931E25CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FEB73F7-0C08-4267-8AC0-809C931E25CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF203601-89E4-46B2-B40C-710355E41159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF203601-89E4-46B2-B40C-710355E41159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF203601-89E4-46B2-B40C-710355E41159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF203601-89E4-46B2-B40C-710355E41159}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C35BE0B-3B6D-4565-A9D0-F657124D4039} = {40FC62FA-654D-4043-8F24-E91D098F48E3}
+		{0FEB73F7-0C08-4267-8AC0-809C931E25CA} = {9C35BE0B-3B6D-4565-A9D0-F657124D4039}
+		{CF203601-89E4-46B2-B40C-710355E41159} = {9C35BE0B-3B6D-4565-A9D0-F657124D4039}
+	EndGlobalSection
+EndGlobal
