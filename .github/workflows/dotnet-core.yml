@@ -12,6 +12,12 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
     - name: Build Unit of work nuget via docker and publish
       uses: docker/build-push-action@v2
       with:
