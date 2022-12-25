@@ -16,6 +16,7 @@ The Unit of Work NuGet package created by Tetacom company is a library that prov
         <RepositoryType>Git</RepositoryType>
         <PackageTags>Unit of Work, EfCore</PackageTags>
         <PackageReleaseNotes>Basic unit of work implementation with repository pattern,</PackageReleaseNotes>
+        <Authors>Stepanov.N.O. Konyschev A.V.</Authors>
     </PropertyGroup>
 
     <ItemGroup>

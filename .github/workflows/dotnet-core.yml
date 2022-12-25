@@ -1,0 +1,33 @@
+name: NuGet Generation
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [closed]
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    name: Update NuGet package
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup .NET Core @ Latest
+        uses: actions/setup-dotnet@v1
+       
+      - name: Build solution and generate NuGet package
+        run: dotnet restore && dotnet build -c release && dotnet pack -c release -o out
+        
+      - name: publish Teta.Packages.UoW.EfCore
+        id: publish_Teta_Packages_UoW_EfCore
+        uses: alirezanet/publish-nuget@v3.0.3
+        with:
+          # Filepath of the project to be packaged, relative to root of repository
+          PROJECT_FILE_PATH: Source/Packages/UoW/Teta.Packages.UoW.EfCore/Teta.Packages.UoW.EfCore.csproj
+          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
