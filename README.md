@@ -48,6 +48,10 @@ After you set-up your DbContext you can add UnitOfWork to you DI container insta
 In our sample we are using postgres NpgSql driver for dbContext configuration
 
 ```csharp
+        // This gheneric factory registration REQUIRED for  IGenericRepository inhection
+        // Or you should register your custom implementation for IGenericRepository for each DbSet type
+        services.AddScoped(typeof(IGenericRepository<,>), typeof(FactoryBasedGenericRepository<,>));
+        
         sc.RegisterUnitOfWork<IMyCustomContext, MyDbContext>(dbContextConfig =>
             {
                 // Getting postgres connection string for application settings 
