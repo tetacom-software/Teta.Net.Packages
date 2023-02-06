@@ -16,8 +16,6 @@ First things first, you should install this package fro, NuGet using following c
   nuget install Teta.Packages.UoW.EfCore
 ```
 
-Or using your favorite npm package manager;
-
 Next, UnitOfWork and EntityFramework assumes that you are using some DbContext implementation for your models;
 In this case you should inherit your model from DbContext class and additionaly from your ICustomDbContext, for example:
 
