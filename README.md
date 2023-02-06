@@ -52,7 +52,7 @@ In our sample we are using postgres NpgSql driver for dbContext configuration
         // Or you should register your custom implementation for IGenericRepository for each DbSet type
         services.AddScoped(typeof(IGenericRepository<,>), typeof(FactoryBasedGenericRepository<,>));
         
-        sc.RegisterUnitOfWork<IMyCustomContext, MyDbContext>(dbContextConfig =>
+        services.RegisterUnitOfWork<IMyCustomContext, MyDbContext>(dbContextConfig =>
             {
                 // Getting postgres connection string for application settings 
                 var postgresConfig = configRoot.GetSection(nameof(Postgres)).Get<Postgres>();
