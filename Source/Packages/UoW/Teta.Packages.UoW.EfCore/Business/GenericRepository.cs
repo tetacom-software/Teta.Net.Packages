@@ -33,7 +33,7 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/> 
-        public virtual T? FirstOrDefault(Expression<Func<T, bool>>? predicate = null)
+        public virtual T FirstOrDefault(Expression<Func<T, bool>> predicate = null)
         {
             if (predicate == null)
             {
@@ -67,7 +67,7 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/> 
-        public virtual async Task<T?> FindAsync(params TKey[] keys)
+        public virtual async Task<T> FindAsync(params TKey[] keys)
         {
             // TODO: проверить на работоспособность
             return await _dbSet.FindAsync(keys);
@@ -157,7 +157,7 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/> 
-        public async Task<T>? FirstOrDefaultAsync([AllowNull]Expression<Func<T, bool>>? predicate = null)
+        public async Task<T> FirstOrDefaultAsync([AllowNull]Expression<Func<T, bool>> predicate = null)
         {
             if (predicate == null)
             {
