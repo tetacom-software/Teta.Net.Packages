@@ -34,14 +34,14 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
         /// </summary>
         /// <param name="predicate">Предикат</param>
         /// <returns>Экземпляр типа</returns>
-        T? FirstOrDefault([AllowNull]Expression<Func<T, bool>>? predicate = null);
+        T FirstOrDefault([AllowNull]Expression<Func<T, bool>> predicate = null);
 
         /// <summary>
         /// Получить первое значние асинхронно
         /// </summary>
         /// <param name="predicate">Предикат</param>
         /// <returns>Экземпляр типа</returns>
-        Task<T?> FirstOrDefaultAsync([AllowNull]Expression<Func<T, bool>>? predicate = null);
+        Task<T> FirstOrDefaultAsync([AllowNull]Expression<Func<T, bool>> predicate = null);
 
         /// <summary>
         /// Получить все доступные значения

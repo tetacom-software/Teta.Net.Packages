@@ -117,13 +117,13 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/>
-        public T? FirstOrDefault(Expression<Func<T, bool>>? predicate = null)
+        public T FirstOrDefault(Expression<Func<T, bool>> predicate = null)
         {
             return _wrappedEntity.FirstOrDefault(predicate);
         }
 
         /// <inheritdoc/>
-        public Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>>? predicate = null)
+        public Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate = null)
         {
             return _wrappedEntity.FirstOrDefaultAsync(predicate);
         }
