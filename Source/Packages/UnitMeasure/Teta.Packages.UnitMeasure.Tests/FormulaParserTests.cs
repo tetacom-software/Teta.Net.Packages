@@ -19,7 +19,7 @@ public class FormulaParserTests
             for (var i = 0; i < 100000; i++)
             {
                 var result = exp.Evaluate(i);
-                Assert.That(i * (54.32 + i/1.3)/12 + 5, Is.EqualTo(result));
+                Assert.That(i * (54.32 + i / 1.3) / 12 + 5, Is.EqualTo(result));
             }
         });
     }

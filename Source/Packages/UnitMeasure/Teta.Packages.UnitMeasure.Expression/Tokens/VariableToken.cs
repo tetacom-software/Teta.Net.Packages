@@ -2,15 +2,15 @@
 
 namespace Teta.Packages.UnitMeasure.Expression.Tokens
 {
-	public class VariableToken : ValueToken
-	{
+    public class VariableToken : ValueToken
+    {
         public VariableToken(string value)
             : base(TokenType.Operand)
         {
             Source = value;
         }
 
-		public string Source { get; }
+        public string Source { get; }
 
         public override string ToString()
         {

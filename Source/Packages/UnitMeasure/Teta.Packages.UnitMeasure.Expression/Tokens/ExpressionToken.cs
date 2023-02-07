@@ -2,8 +2,8 @@
 
 namespace Teta.Packages.UnitMeasure.Expression.Tokens
 {
-	public class ExpressionToken : ValueToken
-	{
+    public class ExpressionToken : ValueToken
+    {
         public ExpressionToken(char operationSymbol)
             : base(TokenType.Expression)
         {
@@ -36,7 +36,7 @@ namespace Teta.Packages.UnitMeasure.Expression.Tokens
 
         public override string ToString()
         {
-	        return $"[{Left}]{Operation}[{Right}]";
+            return $"[{Left}]{Operation}[{Right}]";
         }
     }
 }

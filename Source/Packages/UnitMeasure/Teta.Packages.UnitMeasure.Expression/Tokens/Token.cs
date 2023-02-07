@@ -4,13 +4,13 @@ namespace Teta.Packages.UnitMeasure.Expression.Tokens
 {
 	public abstract class Token
 	{
-        protected Token(TokenType tokenType)
-        {
-	        TokenType = tokenType;
-        }
+		protected Token(TokenType tokenType)
+		{
+			TokenType = tokenType;
+		}
 
-        public int Priority { get; set; }
+		public int Priority { get; set; }
 
-        public TokenType TokenType { get; }
+		public TokenType TokenType { get; }
 	}
 }

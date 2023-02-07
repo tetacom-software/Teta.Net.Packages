@@ -3,7 +3,7 @@ using Teta.Packages.UnitMeasure.Expression.Tokens;
 
 namespace Teta.Packages.UnitMeasure.Expression
 {
-    /// <summary>
+	/// <summary>
 	/// A one-pass parser of simple mathematical expressions (+,-,*,/) with nested brackets without using functions
 	/// </summary>
 	public class FormulaParser
@@ -11,16 +11,16 @@ namespace Teta.Packages.UnitMeasure.Expression
 		private string _source;
 		private Stack<Token> _stack;
 
-        private bool _inOperand;
-        private int _startOperandIdx = -1;
+		private bool _inOperand;
+		private int _startOperandIdx = -1;
 
-        private ExpressionToken _currExpr;
-        private ExpressionToken _nextExpr;
+		private ExpressionToken _currExpr;
+		private ExpressionToken _nextExpr;
 
-        private Token[] _buffer;
-        private int _tokenCnt;
-        private List<ExpressionToken> _order;
-        private Formula _formula;
+		private Token[] _buffer;
+		private int _tokenCnt;
+		private List<ExpressionToken> _order;
+		private Formula _formula;
 
 		public Formula Parse(string source)
 		{
@@ -36,7 +36,7 @@ namespace Teta.Packages.UnitMeasure.Expression
 				var sym = _source[i];
 				switch (sym)
 				{
-					case (char)9:  // horizontal tab
+					case (char)9: // horizontal tab
 					case (char)32: // space
 					case (char)10: // NL line feed, new line (LF)
 					case (char)13: // carriage return (CR)
@@ -139,18 +139,18 @@ namespace Teta.Packages.UnitMeasure.Expression
 			}
 
 			switch (_tokenCnt)
-            {
-                case 1:
-                    _nextExpr = (ExpressionToken)_buffer[0];
-                    _order.Add(_nextExpr);
-                    break;
-                case 3:
-                    _nextExpr = (ExpressionToken)_buffer[1];
-                    _nextExpr.Left = (ValueToken)_buffer[0];
-                    _nextExpr.Right = (ValueToken)_buffer[2];
-                    _order.Add(_nextExpr);
-                    break;
-            }
+			{
+				case 1:
+					_nextExpr = (ExpressionToken)_buffer[0];
+					_order.Add(_nextExpr);
+					break;
+				case 3:
+					_nextExpr = (ExpressionToken)_buffer[1];
+					_nextExpr.Left = (ValueToken)_buffer[0];
+					_nextExpr.Right = (ValueToken)_buffer[2];
+					_order.Add(_nextExpr);
+					break;
+			}
 
 			while (_stack.Count > 0)
 			{
@@ -165,24 +165,24 @@ namespace Teta.Packages.UnitMeasure.Expression
 		}
 
 		private void StartOperand(int index)
-        {
-            if (_inOperand)
-            {
-                return;
-            }
+		{
+			if (_inOperand)
+			{
+				return;
+			}
 
-            _inOperand = true;
-            _startOperandIdx = index;
-        }
+			_inOperand = true;
+			_startOperandIdx = index;
+		}
 
 		private void EndOperand(int index)
 		{
-            if (!_inOperand)
-            {
-                return;
-            }
+			if (!_inOperand)
+			{
+				return;
+			}
 
-            var currentOperand = _source.Substring(_startOperandIdx, index - _startOperandIdx);
+			var currentOperand = _source.Substring(_startOperandIdx, index - _startOperandIdx);
 			ValueToken operand;
 
 			var sep = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
@@ -206,42 +206,43 @@ namespace Teta.Packages.UnitMeasure.Expression
 		}
 
 		private void ProcessBuffer()
-        {
-            _currExpr = (ExpressionToken)_buffer[1];
-            _nextExpr = (ExpressionToken)_buffer[3];
+		{
+			_currExpr = (ExpressionToken)_buffer[1];
+			_nextExpr = (ExpressionToken)_buffer[3];
 
-            if (_currExpr.Priority >= _nextExpr.Priority)
-            {
-                _currExpr.Right = (ValueToken)_buffer[2];
-                _currExpr.Left = (ValueToken)_buffer[0];
+			if (_currExpr.Priority >= _nextExpr.Priority)
+			{
+				_currExpr.Right = (ValueToken)_buffer[2];
+				_currExpr.Left = (ValueToken)_buffer[0];
 
-                while (_stack.Count > 0 && (_stack.Peek().TokenType != TokenType.OpenBracket) && _stack.Peek().Priority >= _nextExpr.Priority)
-                {
-                    _order.Add(_currExpr);
-                    _currExpr = (ExpressionToken)_stack.Pop();
-                    _buffer[1] = _currExpr;
-                }
+				while (_stack.Count > 0 && (_stack.Peek().TokenType != TokenType.OpenBracket) &&
+				       _stack.Peek().Priority >= _nextExpr.Priority)
+				{
+					_order.Add(_currExpr);
+					_currExpr = (ExpressionToken)_stack.Pop();
+					_buffer[1] = _currExpr;
+				}
 
-                // if priority the current operation over than the next, push it into the queue
-                _order.Add(_currExpr);
+				// if priority the current operation over than the next, push it into the queue
+				_order.Add(_currExpr);
 
-                // move buffer
-                _buffer[0] = _buffer[1]; // _currExpr;
-                _buffer[1] = _buffer[3]; // _nextExpr;
-                _tokenCnt = 2;
-            }
-            else
-            {
-                // add to stack
-                _stack.Push(_currExpr);
-                _currExpr.Left = (ValueToken)_buffer[0];
-                _currExpr.Right = (ValueToken)_buffer[3];
+				// move buffer
+				_buffer[0] = _buffer[1]; // _currExpr;
+				_buffer[1] = _buffer[3]; // _nextExpr;
+				_tokenCnt = 2;
+			}
+			else
+			{
+				// add to stack
+				_stack.Push(_currExpr);
+				_currExpr.Left = (ValueToken)_buffer[0];
+				_currExpr.Right = (ValueToken)_buffer[3];
 
-                // move buffer
-                _buffer[0] = _buffer[2]; // operand
-                _buffer[1] = _buffer[3]; // _nextExpr;
-                _tokenCnt = 2;
-            }
-        }
+				// move buffer
+				_buffer[0] = _buffer[2]; // operand
+				_buffer[1] = _buffer[3]; // _nextExpr;
+				_tokenCnt = 2;
+			}
+		}
 	}
 }
