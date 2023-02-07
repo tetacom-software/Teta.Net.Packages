@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Teta.Packages.UnitMeasure.Expression</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Tetacom RPN implementation</Title>
+        <Description>Reverse Polish notation (RPN), Polish postfix notation or simply postfix notation, is a mathematical notation in which operators follow their operands.</Description>
+        <Copyright>TETACOM</Copyright>
+        <PackageProjectUrl>https://github.com/deadokman/Teta.Packages.NuGet</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/deadokman/Teta.Packages.NuGet</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>Reverse Polish notation, RPN</PackageTags>
+        <PackageReleaseNotes>Basic RPN implementation</PackageReleaseNotes>
+        <Authors>Stepanov.N.O. Konyschev A.V.</Authors>
+    </PropertyGroup>
+
+</Project>
