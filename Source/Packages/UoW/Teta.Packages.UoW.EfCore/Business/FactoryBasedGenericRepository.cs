@@ -141,13 +141,13 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/>
-        public IQueryable<IGrouping<K, T>> GroupBy<K>(Expression<Func<T, K>> predicate)
+        public IQueryable<IGrouping<TK, T>> GroupBy<TK>(Expression<Func<T, TK>> predicate)
         {
             return _wrappedEntity.GroupBy(predicate);
         }
 
         /// <inheritdoc/>
-        public IOrderedQueryable<T> OrderBy<K>(Expression<Func<T, K>> predicate)
+        public IOrderedQueryable<T> OrderBy<TK>(Expression<Func<T, TK>> predicate)
         {
             return _wrappedEntity.OrderBy(predicate);
         }

@@ -5,7 +5,7 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
     /// <summary>
     /// Интерфейс UnitOfWork
     /// </summary>
-    public interface IUnitOfWork<TContext> : IUnitOfWorkBase
+    public interface IUnitOfWork<out TContext> : IUnitOfWorkBase
             where TContext : DbContext
     {
         /// <summary>
@@ -17,7 +17,7 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
         /// <summary>
         /// Выполнить сохранение всех изменений из всех UnitOfWork
         /// </summary>
-        /// <param name="unitOfWorks">Опциональный параметр, ссылка на оставшиеся UnitOfWork <see cref="IBusinessBusinessUnitOfWork{TContext}"/> </param>
+        /// <param name="unitOfWorks">Опциональный параметр, ссылка на оставшиеся UnitOfWork <see cref="IUnitOfWork{TContext}"/> </param>
         /// <returns>A <see cref="Task{TResult}"/> Асинхронная операция возвращающая число измененных сущностей.</returns>
         Task SaveChangesAsync(params IUnitOfWorkBase[] unitOfWorks);
     }

@@ -10,7 +10,6 @@
         /// </summary>
         /// <typeparam name="T">Тип объекта</typeparam>
         /// <typeparam name="TKey">Тип ключа объекта в СУБД</typeparam>
-        /// <typeparam name="TContext">Контекст СУБД</typeparam>
         /// <returns>Репозиторий для работы с типом объекта</returns>
         IGenericRepository<T, TKey> Create<T, TKey>()
             where TKey : struct
