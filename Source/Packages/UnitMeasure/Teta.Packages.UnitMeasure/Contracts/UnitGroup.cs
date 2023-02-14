@@ -9,6 +9,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 using Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity;
 
 namespace Teta.Packages.UnitMeasure.Contracts
@@ -17,6 +18,7 @@ namespace Teta.Packages.UnitMeasure.Contracts
     /// Calc unit group
     /// </summary>
     [Table("calc_unit_group")]
+    [Comment("Calc unit group")]
     public class UnitGroup : IBusinessEntity<int>
     {
         /// <summary>
@@ -24,18 +26,23 @@ namespace Teta.Packages.UnitMeasure.Contracts
         /// </summary>
         [Key]
         [Column("id")]
+        [Comment("Primary key")]
         public int Id { get; set; }
         
         /// <summary>
         /// Group name
         /// </summary>
         [Column("name")]
+        [Comment("Group name")]
+        [Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Localization tag
         /// </summary>
         [Column("tag")]
+        [Comment("Localization tag")]
+        [Required(AllowEmptyStrings = false)]
         public string Tag { get; set; }
 
         /// <summary>
