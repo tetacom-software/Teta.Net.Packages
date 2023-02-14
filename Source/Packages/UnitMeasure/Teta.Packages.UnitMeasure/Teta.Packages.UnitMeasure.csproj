@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\UoW\Teta.Packages.UoW.EfCore.Interfaces\Teta.Packages.UoW.EfCore.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

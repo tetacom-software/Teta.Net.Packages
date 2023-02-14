@@ -103,10 +103,15 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
         /// <returns>Асинхронная операция</returns>
         Task ExecuteInsideTransaction(Func<Task> callback);
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Открыть транзакцию
+        /// </summary>
         IDbContextTransaction BeginDbTransaction();
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// Использовать существующую транзакцию
+        /// </summary>
+        /// <param name="dbTransaction">transaction</param>
         void UseTransaction(IDbContextTransaction dbTransaction);
     }
 }

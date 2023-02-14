@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UnitMeasure.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UnitMeasure.Tests", "UnitMeasure\Teta.Packages.UnitMeasure.Tests\Teta.Packages.UnitMeasure.Tests.csproj", "{1F06A218-710C-45EA-A3FD-F09E964F34B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UnitMeasure", "UnitMeasure\Teta.Packages.UnitMeasure\Teta.Packages.UnitMeasure.csproj", "{1B0AD03B-A0D0-4290-8738-D4C5410952BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{1F06A218-710C-45EA-A3FD-F09E964F34B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F06A218-710C-45EA-A3FD-F09E964F34B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F06A218-710C-45EA-A3FD-F09E964F34B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B0AD03B-A0D0-4290-8738-D4C5410952BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B0AD03B-A0D0-4290-8738-D4C5410952BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B0AD03B-A0D0-4290-8738-D4C5410952BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B0AD03B-A0D0-4290-8738-D4C5410952BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9C35BE0B-3B6D-4565-A9D0-F657124D4039} = {40FC62FA-654D-4043-8F24-E91D098F48E3}
@@ -43,5 +49,6 @@ Global
 		{CF203601-89E4-46B2-B40C-710355E41159} = {9C35BE0B-3B6D-4565-A9D0-F657124D4039}
 		{D7F0C286-AAE3-4047-BDB7-142C8DFBFDDA} = {5F659663-FD01-432B-878A-DABD49EEA518}
 		{1F06A218-710C-45EA-A3FD-F09E964F34B9} = {5F659663-FD01-432B-878A-DABD49EEA518}
+		{1B0AD03B-A0D0-4290-8738-D4C5410952BC} = {5F659663-FD01-432B-878A-DABD49EEA518}
 	EndGlobalSection
 EndGlobal
