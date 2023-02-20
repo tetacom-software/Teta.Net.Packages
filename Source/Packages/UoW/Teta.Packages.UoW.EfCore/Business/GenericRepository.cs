@@ -11,19 +11,21 @@ namespace Teta.Packages.UoW.EfCore.Business
     /// <summary>
     /// Репозиторий для работы с типом объекта из EFCore
     /// </summary>
-    public class GenericRepository<T, TKey> : IGenericRepository<T, TKey> 
-        where TKey : struct where T : class, IBusinessEntity<TKey>, new()
+    public class GenericRepository<T, TKey, TContext> : IGenericRepository<T, TKey, TContext>
+        where TKey : struct
+        where T : class, IBusinessEntity<TKey>, new()
+        where TContext : DbContext
     {
         private readonly DbSet<T> _dbSet;
-        private readonly ICommonDbContext _commonDbContext;
+        private readonly TContext _context;
 
         /// <summary>
         /// Конструктор, DI инжекция текущего контекста СУБД
         /// </summary>
-        public GenericRepository(ICommonDbContext context)
+        public GenericRepository(TContext context)
         {
-            _commonDbContext = context ?? throw new ArgumentNullException(nameof(context));
-            _dbSet = context.DbContext.Set<T>();
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _dbSet = context.Set<T>();
         }
 
         /// <inheritdoc/> 
@@ -117,43 +119,43 @@ namespace Teta.Packages.UoW.EfCore.Business
         /// <inheritdoc/> 
         public virtual void Update(T entity)
         {
-            _commonDbContext.DbContext.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         /// <inheritdoc/> 
         public virtual Task BulkInsertOrUpdateAsync(IList<T> entities)
         {
-            return _commonDbContext.DbContext.BulkInsertOrUpdateAsync(entities, config => { config.SetOutputIdentity = true; } );
+            return _context.BulkInsertOrUpdateAsync(entities, config => { config.SetOutputIdentity = true; } );
         }
 
         /// <inheritdoc/> 
         public virtual Task BulkInsertAsync(IList<T> entities)
         {
-            return _commonDbContext.DbContext.BulkInsertAsync(entities, config => { config.SetOutputIdentity = true; });
+            return _context.BulkInsertAsync(entities, config => { config.SetOutputIdentity = true; });
         }
 
         /// <inheritdoc/> 
         public virtual Task BulkUpdateAsync(IList<T> entities)
         {
-            return _commonDbContext.DbContext.BulkUpdateAsync(entities, config => { config.SetOutputIdentity = true; });
+            return _context.BulkUpdateAsync(entities, config => { config.SetOutputIdentity = true; });
         }
 
         /// <inheritdoc/> 
         public virtual Task BulkDeleteAsync(IList<T> entities)
         {
-            return _commonDbContext.DbContext.BulkDeleteAsync(entities);
+            return _context.BulkDeleteAsync(entities);
         }
 
         /// <inheritdoc/> 
         public virtual void SaveChanges()
         {
-            _commonDbContext.DbContext.SaveChanges();
+            _context.SaveChanges();
         }
 
         /// <inheritdoc/> 
         public virtual Task SaveChangesAsync()
         {
-            return _commonDbContext.DbContext.SaveChangesAsync();
+            return _context.SaveChangesAsync();
         }
 
         /// <inheritdoc/> 

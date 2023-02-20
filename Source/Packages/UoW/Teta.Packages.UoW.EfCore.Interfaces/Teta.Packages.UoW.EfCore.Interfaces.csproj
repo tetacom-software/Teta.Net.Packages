@@ -3,7 +3,14 @@
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Copyright>TETACOM</Copyright>
+        <PackageProjectUrl>https://github.com/deadokman/Teta.Packages.NuGet</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/deadokman/Teta.Packages.NuGet</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>Unit of Work, EfCore</PackageTags>
+        <PackageReleaseNotes>Basic unit of work implementation with repository pattern,</PackageReleaseNotes>
         <Authors>Stepanov.N.O. Konyschev A.V.</Authors>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>

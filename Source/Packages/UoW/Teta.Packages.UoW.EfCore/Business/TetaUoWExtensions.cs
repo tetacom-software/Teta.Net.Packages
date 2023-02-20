@@ -19,15 +19,14 @@ public static class TetaUoWExtensions
     public static IServiceCollection RegisterUnitOfWork<TContext, TContextImplementation>(
         this IServiceCollection services, 
         Action<DbContextOptionsBuilder> configureDbContextPool)
-        where TContext : class, ICommonDbContext
-        where TContextImplementation : DbContext, TContext, ICommonDbContext
+        where TContext : class
+        where TContextImplementation : DbContext, TContext
     {
-        services.TryAddScoped<IGenericRepositoryFactory, GenericRepositoryFactory>();
-        services.TryAddScoped<IUnitOfWorkBase, UnitOfWork<TContextImplementation>>();
-        services.TryAddScoped(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+        services.TryAddScoped<IGenericRepositoryFactory<TContextImplementation>, GenericRepositoryFactory<TContextImplementation>>();
+        services.TryAddScoped<IUnitOfWork<TContextImplementation>, UnitOfWork<TContextImplementation>>();
 
         services.AddDbContextPool<TContext, TContextImplementation>(configureDbContextPool);
-        services.TryAddScoped<ICommonDbContext>(sp => sp.GetService<TContext>());
+        services.TryAddScoped<IUnitOfWork<TContextImplementation>, UnitOfWork<TContextImplementation>>();
 
         return services;
     }

@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity;
 
@@ -10,12 +11,14 @@ namespace Teta.Packages.UoW.EfCore.Business
     /// </summary>
     /// <typeparam name="T">Тип сущности</typeparam>
     /// <typeparam name="TKey">Тип ПК сущности</typeparam>
-    public class FactoryBasedGenericRepository<T, TKey> : IGenericRepository<T, TKey>
+    /// <typeparam name="TContext">Тип контекста</typeparam>
+    public class FactoryBasedGenericRepository<T, TKey, TContext> : IGenericRepository<T, TKey, TContext>
         where TKey : struct
         where T : class, IBusinessEntity<TKey>, new()
+        where TContext : DbContext
     {
-        private readonly IGenericRepository<T, TKey> _wrappedEntity;
-        public FactoryBasedGenericRepository(IGenericRepositoryFactory factory)
+        private readonly IGenericRepository<T, TKey, TContext> _wrappedEntity;
+        public FactoryBasedGenericRepository(IGenericRepositoryFactory<TContext> factory)
         {
             _wrappedEntity = factory.Create<T, TKey>();
         }

@@ -9,14 +9,13 @@
 
 using Microsoft.EntityFrameworkCore;
 using Teta.Packages.UnitMeasure.Contracts;
-using Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity;
 
 namespace Teta.Packages.UnitMeasure
 {
     /// <summary>
     /// Interface unit measure db context
     /// </summary>
-    public interface IUnitDbContext : ICommonDbContext
+    public interface IUnitDbContext
     {
         /// <summary>
         /// Calc parameter set
