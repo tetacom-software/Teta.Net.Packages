@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfCore", "EfCore", "{9C35BE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{31640589-EC2B-442A-9E10-01504720D254}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teta.Packages.Auth", "Auth\Teta.Packages.Auth\Teta.Packages.Auth.csproj", "{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CF203601-89E4-46B2-B40C-710355E41159}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF203601-89E4-46B2-B40C-710355E41159}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF203601-89E4-46B2-B40C-710355E41159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -35,6 +41,7 @@ Global
 		{0FEB73F7-0C08-4267-8AC0-809C931E25CA} = {9C35BE0B-3B6D-4565-A9D0-F657124D4039}
 		{CF203601-89E4-46B2-B40C-710355E41159} = {9C35BE0B-3B6D-4565-A9D0-F657124D4039}
 		{9C35BE0B-3B6D-4565-A9D0-F657124D4039} = {40FC62FA-654D-4043-8F24-E91D098F48E3}
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF} = {31640589-EC2B-442A-9E10-01504720D254}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {558F7F02-BCE8-4480-96EB-3FC42F84B800}

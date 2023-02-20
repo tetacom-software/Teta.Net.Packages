@@ -429,61 +429,6 @@
             </summary>
             <param name="claims">Acceptable user claims</param>
         </member>
-        <member name="T:Teta.Auth.Contracts.Model.Dto.CompanyUserDto">
-            <summary>
-            Пользователь компании
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.Id">
-            <summary>
-            Идентификатор
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.Name">
-            <summary>
-            Firstname
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.Surname">
-            <summary>
-            Surname
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.MiddleName">
-            <summary>
-            Middle name
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.UserName">
-            <summary>
-            Unique user name
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.Email">
-            <summary>
-            Email
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.Phone">
-            <summary>
-            Phone number
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.CellPhone">
-            <summary>
-            Cell phone
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.Verified">
-            <summary>
-            Пользователь верифицирован
-            </summary>
-        </member>
-        <member name="P:Teta.Auth.Contracts.Model.Dto.CompanyUserDto.AvatarFileId">
-            <summary>
-            Идентификатор файла аватара
-            </summary>
-        </member>
         <member name="T:Teta.Rir23.Auth.Interfaces.IAuthLogic">
             <summary>
             Claims principal check interface

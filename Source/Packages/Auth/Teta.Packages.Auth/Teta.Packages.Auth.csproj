@@ -4,6 +4,15 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Tetacom default authorization</Title>
+    <Copyright>(c) Tetacom</Copyright>
+    <Description>Custom filter for ASP .NET Core authentication and business login interfaces
+Support KeyCloak Resource owner password flow authentication.</Description>
+    <PackageProjectUrl>https://github.com/tetacom-software/Teta.Net.Packages</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tetacom-software/Teta.Net.Packages</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Base package with keycloak reosurce owner password flow authentication.</PackageReleaseNotes>
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,11 +34,6 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 		</PackageReference>-->
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Grid\Teta.Grid.Contracts\Teta.Packages.Grid.Contracts.csproj" />
 	</ItemGroup>
 
 </Project>
