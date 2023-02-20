@@ -1,14 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UoW", "UoW", "{40FC62FA-654D-4043-8F24-E91D098F48E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UoW.EfCore", "UoW\Teta.Packages.UoW.EfCore\Teta.Packages.UoW.EfCore.csproj", "{0FEB73F7-0C08-4267-8AC0-809C931E25CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teta.Packages.UoW.EfCore", "UoW\Teta.Packages.UoW.EfCore\Teta.Packages.UoW.EfCore.csproj", "{0FEB73F7-0C08-4267-8AC0-809C931E25CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UoW.EfCore.Interfaces", "UoW\Teta.Packages.UoW.EfCore.Interfaces\Teta.Packages.UoW.EfCore.Interfaces.csproj", "{CF203601-89E4-46B2-B40C-710355E41159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teta.Packages.UoW.EfCore.Interfaces", "UoW\Teta.Packages.UoW.EfCore.Interfaces\Teta.Packages.UoW.EfCore.Interfaces.csproj", "{CF203601-89E4-46B2-B40C-710355E41159}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfCore", "EfCore", "{9C35BE0B-3B6D-4565-A9D0-F657124D4039}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{31640589-EC2B-442A-9E10-01504720D254}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitMeasure", "UnitMeasure", "{5F659663-FD01-432B-878A-DABD49EEA518}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Teta.Packages.Auth", "Auth\Teta.Packages.Auth\Teta.Packages.Auth.csproj", "{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teta.Packages.UnitMeasure.Expression", "UnitMeasure\Teta.Packages.UnitMeasure.Expression\Teta.Packages.UnitMeasure.Expression.csproj", "{D7F0C286-AAE3-4047-BDB7-142C8DFBFDDA}"
 EndProject
@@ -30,6 +37,10 @@ Global
 		{CF203601-89E4-46B2-B40C-710355E41159}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF203601-89E4-46B2-B40C-710355E41159}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF203601-89E4-46B2-B40C-710355E41159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7F0C286-AAE3-4047-BDB7-142C8DFBFDDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7F0C286-AAE3-4047-BDB7-142C8DFBFDDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7F0C286-AAE3-4047-BDB7-142C8DFBFDDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,12 +54,19 @@ Global
 		{1B0AD03B-A0D0-4290-8738-D4C5410952BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0AD03B-A0D0-4290-8738-D4C5410952BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9C35BE0B-3B6D-4565-A9D0-F657124D4039} = {40FC62FA-654D-4043-8F24-E91D098F48E3}
 		{0FEB73F7-0C08-4267-8AC0-809C931E25CA} = {9C35BE0B-3B6D-4565-A9D0-F657124D4039}
 		{CF203601-89E4-46B2-B40C-710355E41159} = {9C35BE0B-3B6D-4565-A9D0-F657124D4039}
+		{9C35BE0B-3B6D-4565-A9D0-F657124D4039} = {40FC62FA-654D-4043-8F24-E91D098F48E3}
+		{5F2F7C10-9D4C-431C-B49B-FBD32DACEBAF} = {31640589-EC2B-442A-9E10-01504720D254}
 		{D7F0C286-AAE3-4047-BDB7-142C8DFBFDDA} = {5F659663-FD01-432B-878A-DABD49EEA518}
 		{1F06A218-710C-45EA-A3FD-F09E964F34B9} = {5F659663-FD01-432B-878A-DABD49EEA518}
 		{1B0AD03B-A0D0-4290-8738-D4C5410952BC} = {5F659663-FD01-432B-878A-DABD49EEA518}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {558F7F02-BCE8-4480-96EB-3FC42F84B800}
 	EndGlobalSection
 EndGlobal
