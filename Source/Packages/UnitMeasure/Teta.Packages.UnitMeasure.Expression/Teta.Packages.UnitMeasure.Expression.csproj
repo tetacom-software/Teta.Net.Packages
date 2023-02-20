@@ -14,6 +14,7 @@
         <PackageTags>Reverse Polish notation, RPN</PackageTags>
         <PackageReleaseNotes>Basic RPN implementation</PackageReleaseNotes>
         <Authors>Stepanov.N.O. Konyschev A.V.</Authors>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
 </Project>
