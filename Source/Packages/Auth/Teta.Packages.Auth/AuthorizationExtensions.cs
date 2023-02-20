@@ -4,55 +4,78 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 // <summary>
-//  Расширение для регистрации блока авторизации
+//  Tetacom authentication extensions
 // </summary>
 
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Headers;
-using System.Net;
-using System.Xml.Linq;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Teta.Packages.Auth.Configuration;
-using Teta.Packages.Auth.Contracts;
 using Teta.Packages.Auth.Implementation;
 using Teta.Packages.Auth.Interfaces;
-using System.Security.Cryptography;
-using Newtonsoft.Json;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Teta.Packages.Auth
 {
     /// <summary>
-    /// Расширение для регистрации блока авторизации
+    /// Authentication extensions
     /// </summary>
     public static class AuthorizationExtensions
     {
         /// <summary>
-        /// Расширение для валидации токена
+        /// Add custom JWT token validation using ASP .NET Core default libraries
         /// </summary>
         /// <param name="services">Service collection</param>
-        /// <param name="configuration">Объект конфигурации</param>
+        /// <param name="configuration">Configuration</param>
+        /// <param name="jwtOptionConfig">Configuration action for JWT bearer authentication, if null - default configuration will be used</param>
+        /// <param name="authOptionConfig">Configure authentication, if null - default configuration will be used</param>
         /// <returns>Chain service collection</returns>
-        public static IServiceCollection AddCustomAuthValidation(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddCustomAuthValidation(
+            [NotNull] this IServiceCollection services, 
+            [NotNull] IConfiguration configuration,
+            [AllowNull] Action<JwtBearerOptions> jwtOptionConfig = null,
+            [AllowNull] Action<AuthenticationOptions> authOptionConfig = null)
         {
-            var clientOptions = services.AddWebOptions<AuthClientOptions>(configuration);
+            if (services is null)
+            {
+                throw new ArgumentNullException(nameof(services));
+            }
+
+            if (configuration is null)
+            {
+                throw new ArgumentNullException(nameof(configuration));
+            }
+
+            var clientOptions = services.BindOptions<AuthClientOptions>(configuration);
             services.AddAuthentication(
                 options =>
                 {
+                    if (authOptionConfig is not null)
+                    {
+                        authOptionConfig.Invoke(options);
+                        return;
+                    }
+
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 }).AddJwtBearer(
                 options =>
                 {
+                    if (jwtOptionConfig != null)
+                    {
+                        jwtOptionConfig.Invoke(options);
+                        return;
+                    }
+
                     options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = GeTokenValidationParameters(clientOptions.Secret);
+                    options.TokenValidationParameters = GetokenValidationParameters(clientOptions.Secret);
                     options.Events = new JwtBearerEvents
                     {
                         OnMessageReceived = context =>
@@ -74,30 +97,33 @@ namespace Teta.Packages.Auth
         }
 
         /// <summary>
-        /// Добавляем секцию userdata в jwt
-        /// </summary>
-        /// <param name="builder">Application builder</param>
-        /// <returns>Chain application builder</returns>
-        public static IApplicationBuilder UseCustomAuthentication(this IApplicationBuilder builder)
-        {
-            builder.UseAuthentication();
-            return builder;
-        }
-
-        /// <summary>
         /// Registrates entities for keycloak 
         /// Resource owner authentication flow
         /// </summary>
+        /// <param name="sc">DI builder</param>
+        /// <param name="config">Application configuration</param>
+        /// <param name="jwtOptionConfig">Configuration action for JWT bearer authentication, if null - default configuration will be used</param>
+        /// <param name="authOptionConfig"></param>
         /// <returns></returns>
-        public static IServiceCollection UseKeycloakAuthentication(this IServiceCollection sc, IConfiguration config)
+        public static IServiceCollection 
+            UseKeycloakAuthentication(
+            [NotNull] this IServiceCollection sc, 
+            [NotNull] IConfiguration config,
+            [AllowNull] Action<JwtBearerOptions> jwtOptionConfig = null,
+            [AllowNull] Action<AuthenticationOptions> authOptionConfig = null)
         {
-            //specify to use TLS 1.2 as default connection
-            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
-            ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => true;
+            if (sc is null)
+            {
+                throw new ArgumentNullException(nameof(sc));
+            }
+
+            if (config is null)
+            {
+                throw new ArgumentNullException(nameof(config));
+            }
 
             // Add JWK from keycloak to authentication extension
-
-            var kcOptions = sc.AddWebOptions<KcOptions>(config);
+            var kcOptions = sc.BindOptions<KcOptions>(config);
             sc.AddHttpClient<IKcAccessClient, KcAccessClient>((sp, c) =>
             {
                 var options = sp.GetService<IOptions<KcOptions>>();
@@ -109,20 +135,28 @@ namespace Teta.Packages.Auth
                 var uriBuilder = new UriBuilder("http", options.Value.Host, options.Value.Port);
                 c.BaseAddress = uriBuilder.Uri;
                 c.DefaultRequestHeaders.Accept.Clear();
-
-                // Тут же сконфигурировать токены и все что может понадобиться для доступа
                 c.Timeout = TimeSpan.FromMilliseconds(options.Value.RequestTimeoutMsec);
             });
 
-   
             sc.AddAuthentication(
                 options =>
                 {
+                    if (authOptionConfig is not null)
+                    {
+                        authOptionConfig.Invoke(options);
+                        return;
+                    }
                     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 }).AddJwtBearer(
                 options =>
                 {
+                    if (jwtOptionConfig != null)
+                    {
+                        jwtOptionConfig.Invoke(options);
+                        return;
+                    }
+
                     options.RequireHttpsMetadata = false;
                     var cert = new X509Certificate2(Encoding.UTF8.GetBytes(kcOptions.PemCertificate));
 
@@ -161,7 +195,7 @@ namespace Teta.Packages.Auth
         }
 
         /// <summary>
-        /// Регистрация контекста пользователя
+        /// Add default user cotext and it implementation to DI
         /// </summary>
         /// <param name="services">Service collection</param>
         /// <returns>Chain service collection</returns>
@@ -180,14 +214,24 @@ namespace Teta.Packages.Auth
         }
 
         /// <summary>
-        /// Расширение для генерации токена
+        /// Parameters method
         /// </summary>
-        /// <typeparam name="T">Тип опций</typeparam>
-        /// <param name="services">Service collection</param>
-        /// <param name="configuration">Объект конфигурации</param>
-        /// <param name="name">Название конфигурации</param>
-        /// <returns>Chain service collection</returns>
-        public static T AddWebOptions<T>(this IServiceCollection services, IConfiguration configuration, string name = null)
+        /// <param name="securityKey">Security key</param>
+        /// <returns> Returns token validation parameters</returns>
+        private static TokenValidationParameters GetokenValidationParameters(JsonWebKey securityKey)
+        {
+            return new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = securityKey,
+                ClockSkew = TimeSpan.Zero,
+            };
+        }
+
+        private static T BindOptions<T>(this IServiceCollection services, IConfiguration configuration, string name = null, [AllowNull] Action<JwtBearerOptions> jwtOptionConfig = null)
             where T : class
         {
             if (string.IsNullOrEmpty(name))
@@ -202,56 +246,7 @@ namespace Teta.Packages.Auth
             return configuration.GetSection(name).Get<T>();
         }
 
-        /// <summary>
-        /// Регистрация ключа безопасности
-        /// </summary>
-        /// <param name="services">Service collection</param>
-        /// <param name="secretKey">Секретная строка</param>
-        /// <returns>Ключ безопасности</returns>
-        public static SigningCredentials AddSecurityKey(this IServiceCollection services, JsonWebKey secretKey)
-        {
-            var signingCredentials = new SigningCredentials(secretKey, secretKey.Alg);
-            services.AddSingleton(_ => signingCredentials);
-
-            return signingCredentials;
-        }
-
-        /// <summary>
-        /// Parameters method
-        /// </summary>
-        /// <param name="securityKey">Security key</param>
-        /// <returns> Returns token validation parameters</returns>
-        public static TokenValidationParameters GeTokenValidationParameters(JsonWebKey securityKey)
-        {
-            return new TokenValidationParameters
-            {
-                ValidateIssuer = false,
-                ValidateAudience = false,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = securityKey,
-                ClockSkew = TimeSpan.Zero,
-            };
-        }
-
-
-        public static string ToJWK(this RSA rsa, string kid)
-        {
-            var parameters = rsa.ExportParameters(false);
-
-            var jwk = new
-            {
-                kty = "RSA",
-                kid = kid,
-                n = Base64UrlEncoder.Encode(parameters.Modulus),
-                e = Base64UrlEncoder.Encode(parameters.Exponent)
-            };
-
-            return JsonConvert.SerializeObject(jwk);
-        }
-
-
-        public static class Base64UrlEncoder
+        private static class Base64UrlEncoder
         {
             public static string Encode(byte[] arg)
             {

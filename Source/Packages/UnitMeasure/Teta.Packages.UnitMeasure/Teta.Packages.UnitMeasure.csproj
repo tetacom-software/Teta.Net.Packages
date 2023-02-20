@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Teta.Packages.UnitMeasure</RootNamespace>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>EF Core unit measure context</Title>
+        <Description>Implementation of a system of units of measurement with formula conversion.</Description>
+        <Copyright>TETACOM</Copyright>
+        <PackageProjectUrl>https://github.com/deadokman/Teta.Packages.NuGet</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/deadokman/Teta.Packages.NuGet</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>EF core, unit measure</PackageTags>
+        <PackageReleaseNotes>Basic RPN implementation</PackageReleaseNotes>
+        <Authors>Stepanov.N.O. Konyschev A.V. Kurtse A.P.</Authors>
+        <Version>1.0.1</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\UoW\Teta.Packages.UoW.EfCore.Interfaces\Teta.Packages.UoW.EfCore.Interfaces.csproj" />
+    </ItemGroup>
+
+</Project>

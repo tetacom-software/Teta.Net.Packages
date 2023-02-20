@@ -12,7 +12,11 @@ Support KeyCloak Resource owner password flow authentication.</Description>
     <PackageProjectUrl>https://github.com/tetacom-software/Teta.Net.Packages</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tetacom-software/Teta.Net.Packages</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Base package with keycloak reosurce owner password flow authentication.</PackageReleaseNotes>
+    <PackageReleaseNotes>Base package with keycloak resource owner password flow authentication.</PackageReleaseNotes>
+	<Authors>Stepanov.N.O. Konyschev A.V.</Authors>
+	<Version>1.0.0</Version>
+	<Company>TETACOM</Company>
+	<PackageTags>Keycloak,Authentication,Authtorization</PackageTags>
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

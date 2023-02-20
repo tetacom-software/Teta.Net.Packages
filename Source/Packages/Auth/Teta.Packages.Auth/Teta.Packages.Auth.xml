@@ -4,81 +4,42 @@
         <name>Teta.Packages.Auth</name>
     </assembly>
     <members>
-        <member name="T:Teta.Packages.Auth.AdministatorsGrantAccessAttribute">
-            <summary>
-            Доступ всех пользователей
-            </summary>
-        </member>
-        <member name="M:Teta.Packages.Auth.AdministatorsGrantAccessAttribute.#ctor">
-            <summary>
-            Инициализирует новый экземпляр класса <see cref="T:Teta.Packages.Auth.AllUserGrantAccessAttribute"/>.
-            </summary>
-        </member>
-        <member name="T:Teta.Packages.Auth.AllUserGrantAccessAttribute">
-            <summary>
-            Доступ всех пользователей
-            </summary>
-        </member>
-        <member name="M:Teta.Packages.Auth.AllUserGrantAccessAttribute.#ctor">
-            <summary>
-            Инициализирует новый экземпляр класса <see cref="T:Teta.Packages.Auth.AllUserGrantAccessAttribute"/>.
-            </summary>
-        </member>
         <member name="T:Teta.Packages.Auth.AuthorizationExtensions">
             <summary>
-            Расширение для регистрации блока авторизации
+            Authentication extensions
             </summary>
         </member>
-        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.AddCustomAuthValidation(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.AddCustomAuthValidation(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions},System.Action{Microsoft.AspNetCore.Authentication.AuthenticationOptions})">
             <summary>
-            Расширение для валидации токена
+            Add custom JWT token validation using ASP .NET Core default libraries
             </summary>
             <param name="services">Service collection</param>
-            <param name="configuration">Объект конфигурации</param>
+            <param name="configuration">Configuration</param>
+            <param name="jwtOptionConfig">Configuration action for JWT bearer authentication, if null - default configuration will be used</param>
+            <param name="authOptionConfig">Configure authentication, if null - default configuration will be used</param>
             <returns>Chain service collection</returns>
         </member>
-        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.UseCustomAuthentication(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
-            <summary>
-            Добавляем секцию userdata в jwt
-            </summary>
-            <param name="builder">Application builder</param>
-            <returns>Chain application builder</returns>
-        </member>
-        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.UseKeycloakAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.UseKeycloakAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.Action{Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions},System.Action{Microsoft.AspNetCore.Authentication.AuthenticationOptions})">
             <summary>
             Registrates entities for keycloak 
             Resource owner authentication flow
             </summary>
+            <param name="sc">DI builder</param>
+            <param name="config">Application configuration</param>
+            <param name="jwtOptionConfig">Configuration action for JWT bearer authentication, if null - default configuration will be used</param>
+            <param name="authOptionConfig"></param>
             <returns></returns>
         </member>
         <member name="M:Teta.Packages.Auth.AuthorizationExtensions.AddUserContext``2(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Регистрация контекста пользователя
+            Add default user cotext and it implementation to DI
             </summary>
             <param name="services">Service collection</param>
             <returns>Chain service collection</returns>
             <typeparam name="TUserContextInface">Interface for UserContextImplementation</typeparam>
             <typeparam name="TUserContextImplementation">User context class</typeparam>
         </member>
-        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.AddWebOptions``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,System.String)">
-            <summary>
-            Расширение для генерации токена
-            </summary>
-            <typeparam name="T">Тип опций</typeparam>
-            <param name="services">Service collection</param>
-            <param name="configuration">Объект конфигурации</param>
-            <param name="name">Название конфигурации</param>
-            <returns>Chain service collection</returns>
-        </member>
-        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.AddSecurityKey(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.IdentityModel.Tokens.JsonWebKey)">
-            <summary>
-            Регистрация ключа безопасности
-            </summary>
-            <param name="services">Service collection</param>
-            <param name="secretKey">Секретная строка</param>
-            <returns>Ключ безопасности</returns>
-        </member>
-        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.GeTokenValidationParameters(Microsoft.IdentityModel.Tokens.JsonWebKey)">
+        <member name="M:Teta.Packages.Auth.AuthorizationExtensions.GetokenValidationParameters(Microsoft.IdentityModel.Tokens.JsonWebKey)">
             <summary>
             Parameters method
             </summary>
@@ -90,7 +51,7 @@
             Filter implements user claim check logic
             </summary>
         </member>
-        <member name="M:Teta.Packages.Auth.AuthorizationFilter.#ctor(System.String[],Teta.Rir23.Auth.Interfaces.IAuthLogic)">
+        <member name="M:Teta.Packages.Auth.AuthorizationFilter.#ctor(System.String[],Teta.Packages.Auth.Interfaces.IAuthLogic)">
             <summary>
             Initilize new instance of class <see cref="T:Teta.Packages.Auth.AuthorizationFilter"/>.
             </summary>
@@ -123,24 +84,49 @@
             Authorization client settings
             </summary>
         </member>
-        <member name="P:Teta.Packages.Auth.Configuration.AuthClientOptions.UseKeycloakIdentityService">
-            <summary>
-            Использовать сервис keycloak
-            </summary>
-        </member>
         <member name="P:Teta.Packages.Auth.Configuration.AuthClientOptions.Secret">
             <summary>
             Secret for JWT token auth
             </summary>
         </member>
-        <member name="T:Teta.Packages.Auth.Configuration.KeycloakOptions">
+        <member name="T:Teta.Packages.Auth.Configuration.KcOptions">
             <summary>
             Keycloak options
             </summary>
         </member>
-        <member name="P:Teta.Packages.Auth.Configuration.KeycloakOptions.Host">
+        <member name="P:Teta.Packages.Auth.Configuration.KcOptions.Realm">
             <summary>
-            Keycloak options
+            Auth realm name
+            </summary>
+        </member>
+        <member name="P:Teta.Packages.Auth.Configuration.KcOptions.ClientId">
+            <summary>
+            Client identifier
+            </summary>
+        </member>
+        <member name="P:Teta.Packages.Auth.Configuration.KcOptions.ClientSecret">
+            <summary>
+            Client secret key
+            </summary>
+        </member>
+        <member name="P:Teta.Packages.Auth.Configuration.KcOptions.Host">
+            <summary>
+            Keycloak URL
+            </summary>
+        </member>
+        <member name="P:Teta.Packages.Auth.Configuration.KcOptions.Port">
+            <summary>
+            Keycloak port
+            </summary>
+        </member>
+        <member name="P:Teta.Packages.Auth.Configuration.KcOptions.RequestTimeoutMsec">
+            <summary>
+            KC service request timeout in milliseconds (default 1000)
+            </summary>
+        </member>
+        <member name="P:Teta.Packages.Auth.Configuration.KcOptions.PemCertificate">
+            <summary>
+            Certificate path to KC jwt validation
             </summary>
         </member>
         <member name="T:Teta.Packages.Auth.Configuration.UserData">
@@ -225,46 +211,6 @@
             Company identifier
             </summary>
         </member>
-        <member name="T:Teta.Packages.Auth.Contracts.KcOptions">
-            <summary>
-            Keycloak options
-            </summary>
-        </member>
-        <member name="P:Teta.Packages.Auth.Contracts.KcOptions.Realm">
-            <summary>
-            Auth realm name
-            </summary>
-        </member>
-        <member name="P:Teta.Packages.Auth.Contracts.KcOptions.ClientId">
-            <summary>
-            Client identifier
-            </summary>
-        </member>
-        <member name="P:Teta.Packages.Auth.Contracts.KcOptions.ClientSecret">
-            <summary>
-            Client secret key
-            </summary>
-        </member>
-        <member name="P:Teta.Packages.Auth.Contracts.KcOptions.Host">
-            <summary>
-            Keycloak URL
-            </summary>
-        </member>
-        <member name="P:Teta.Packages.Auth.Contracts.KcOptions.Port">
-            <summary>
-            Keycloak port
-            </summary>
-        </member>
-        <member name="P:Teta.Packages.Auth.Contracts.KcOptions.RequestTimeoutMsec">
-            <summary>
-            KC service request timeout in milliseconds (default 1000)
-            </summary>
-        </member>
-        <member name="P:Teta.Packages.Auth.Contracts.KcOptions.PemCertificate">
-            <summary>
-            Certificate path to KC jwt validation
-            </summary>
-        </member>
         <member name="T:Teta.Packages.Auth.Contracts.TetaDefaultRoles">
             <summary>
             Default role codes
@@ -335,7 +281,7 @@
             KC access client implementation
             </summary>
         </member>
-        <member name="M:Teta.Packages.Auth.Implementation.KcAccessClient.#ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Options.IOptions{Teta.Packages.Auth.Contracts.KcOptions})">
+        <member name="M:Teta.Packages.Auth.Implementation.KcAccessClient.#ctor(System.Net.Http.HttpClient,Microsoft.Extensions.Options.IOptions{Teta.Packages.Auth.Configuration.KcOptions})">
             <summary>
             Ctor
             </summary>
@@ -352,6 +298,20 @@
         </member>
         <member name="M:Teta.Packages.Auth.Implementation.KcAccessClient.RefreshAccessToken(System.String)">
             <inheritdoc/>
+        </member>
+        <member name="T:Teta.Packages.Auth.Interfaces.IAuthLogic">
+            <summary>
+            Claims principal check interface
+            </summary>
+        </member>
+        <member name="M:Teta.Packages.Auth.Interfaces.IAuthLogic.CheckAccess(System.Security.Claims.ClaimsPrincipal,Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext,System.String[],System.Boolean)">
+            <summary>
+            Claims principal check
+            </summary>
+            <param name="user">User</param>
+            <param name="context">Context</param>
+            <param name="isSu">User has default tetacom SU flag</param>
+            <returns>true if validation passes</returns>
         </member>
         <member name="T:Teta.Packages.Auth.Interfaces.IKcAccessClient">
             <summary>
@@ -428,20 +388,6 @@
             Инициализирует новый экземпляр класса <see cref="T:Teta.Packages.Auth.TetaAuthorizeAttribute"/>.
             </summary>
             <param name="claims">Acceptable user claims</param>
-        </member>
-        <member name="T:Teta.Rir23.Auth.Interfaces.IAuthLogic">
-            <summary>
-            Claims principal check interface
-            </summary>
-        </member>
-        <member name="M:Teta.Rir23.Auth.Interfaces.IAuthLogic.CheckAccess(System.Security.Claims.ClaimsPrincipal,Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext,System.String[],System.Boolean)">
-            <summary>
-            Claims principal check
-            </summary>
-            <param name="user">User</param>
-            <param name="context">Context</param>
-            <param name="isSu">User has default tetacom SU flag</param>
-            <returns>true if validation passes</returns>
         </member>
     </members>
 </doc>

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Text.Json.Nodes;
+using Teta.Packages.Auth.Configuration;
 using Teta.Packages.Auth.Contracts;
 using Teta.Packages.Auth.Interfaces;
 

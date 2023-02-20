@@ -1,6 +1,7 @@
 ﻿using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
@@ -8,9 +9,10 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
     /// <summary>
     /// Интерфейс репозитория с базовыми методами
     /// </summary>
-    public interface IGenericRepository<T, TKey>
+    public interface IGenericRepository<T, in TKey, TContext>
         where TKey : struct
         where T : class, IBusinessEntity<TKey>, new()
+        where TContext : DbContext
     {
         /// <summary>
         /// Выполняет сохранение всех изменений в СУБД
@@ -34,14 +36,14 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
         /// </summary>
         /// <param name="predicate">Предикат</param>
         /// <returns>Экземпляр типа</returns>
-        T? FirstOrDefault([AllowNull]Expression<Func<T, bool>>? predicate = null);
+        T FirstOrDefault([AllowNull]Expression<Func<T, bool>> predicate = null);
 
         /// <summary>
         /// Получить первое значние асинхронно
         /// </summary>
         /// <param name="predicate">Предикат</param>
         /// <returns>Экземпляр типа</returns>
-        Task<T?> FirstOrDefaultAsync([AllowNull]Expression<Func<T, bool>>? predicate = null);
+        Task<T> FirstOrDefaultAsync([AllowNull]Expression<Func<T, bool>> predicate = null);
 
         /// <summary>
         /// Получить все доступные значения
@@ -129,12 +131,12 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
         /// <summary>
         /// Order by
         /// </summary>
-        IOrderedQueryable<T> OrderBy<K>(Expression<Func<T, K>> predicate);
+        IOrderedQueryable<T> OrderBy<TK>(Expression<Func<T, TK>> predicate);
 
         /// <summary>
         /// Order by
         /// </summary>
-        IQueryable<IGrouping<K, T>> GroupBy<K>(Expression<Func<T, K>> predicate);
+        IQueryable<IGrouping<TK, T>> GroupBy<TK>(Expression<Func<T, TK>> predicate);
 
         /// <summary>
         /// Remove range of given entities

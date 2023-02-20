@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Teta.Packages.Auth.Contracts;
-using Teta.Rir23.Auth.Interfaces;
+using Teta.Packages.Auth.Interfaces;
 
 namespace Teta.Packages.Auth
 {

@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity;
 
@@ -10,12 +11,14 @@ namespace Teta.Packages.UoW.EfCore.Business
     /// </summary>
     /// <typeparam name="T">Тип сущности</typeparam>
     /// <typeparam name="TKey">Тип ПК сущности</typeparam>
-    public class FactoryBasedGenericRepository<T, TKey> : IGenericRepository<T, TKey>
+    /// <typeparam name="TContext">Тип контекста</typeparam>
+    public class FactoryBasedGenericRepository<T, TKey, TContext> : IGenericRepository<T, TKey, TContext>
         where TKey : struct
         where T : class, IBusinessEntity<TKey>, new()
+        where TContext : DbContext
     {
-        private readonly IGenericRepository<T, TKey> _wrappedEntity;
-        public FactoryBasedGenericRepository(IGenericRepositoryFactory factory)
+        private readonly IGenericRepository<T, TKey, TContext> _wrappedEntity;
+        public FactoryBasedGenericRepository(IGenericRepositoryFactory<TContext> factory)
         {
             _wrappedEntity = factory.Create<T, TKey>();
         }
@@ -117,13 +120,13 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/>
-        public T? FirstOrDefault(Expression<Func<T, bool>>? predicate = null)
+        public T FirstOrDefault(Expression<Func<T, bool>> predicate = null)
         {
             return _wrappedEntity.FirstOrDefault(predicate);
         }
 
         /// <inheritdoc/>
-        public Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>>? predicate = null)
+        public Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate = null)
         {
             return _wrappedEntity.FirstOrDefaultAsync(predicate);
         }
@@ -141,13 +144,13 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/>
-        public IQueryable<IGrouping<K, T>> GroupBy<K>(Expression<Func<T, K>> predicate)
+        public IQueryable<IGrouping<TK, T>> GroupBy<TK>(Expression<Func<T, TK>> predicate)
         {
             return _wrappedEntity.GroupBy(predicate);
         }
 
         /// <inheritdoc/>
-        public IOrderedQueryable<T> OrderBy<K>(Expression<Func<T, K>> predicate)
+        public IOrderedQueryable<T> OrderBy<TK>(Expression<Func<T, TK>> predicate)
         {
             return _wrappedEntity.OrderBy(predicate);
         }

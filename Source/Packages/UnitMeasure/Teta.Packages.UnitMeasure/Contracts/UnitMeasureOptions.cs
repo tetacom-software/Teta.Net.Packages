@@ -1,26 +1,25 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AuthClientOptions.cs" company="TETA">
-// Copyright (c) TETA. Ufa, 2023.
+// <copyright file="UnitGroup.cs" company="TETA">
+// Copyright (c) TETA. Ufa, 2022.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 // <summary>
-//  Authorization client settings
+//  Unit measure settings
 // </summary>
 
 using System.ComponentModel.DataAnnotations;
-using Microsoft.IdentityModel.Tokens;
 
-namespace Teta.Packages.Auth.Configuration
+namespace Teta.Packages.UnitMeasure.Contracts
 {
     /// <summary>
-    /// Authorization client settings
+    /// Unit measure settings
     /// </summary>
-    public class AuthClientOptions
+    public class UnitMeasureOptions
     {
         /// <summary>
-        /// Secret for JWT token auth
+        /// Schema name
         /// </summary>
         [Required]
-        public JsonWebKey Secret { get; set; }
+        public string SchemaName { get; set; }
     }
 }

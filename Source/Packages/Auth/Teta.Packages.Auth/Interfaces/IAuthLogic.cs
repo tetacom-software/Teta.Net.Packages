@@ -10,7 +10,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Teta.Rir23.Auth.Interfaces
+namespace Teta.Packages.Auth.Interfaces
 {
     /// <summary>
     /// Claims principal check interface

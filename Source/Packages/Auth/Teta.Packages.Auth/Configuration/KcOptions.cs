@@ -9,7 +9,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace Teta.Packages.Auth.Contracts
+namespace Teta.Packages.Auth.Configuration
 {
     /// <summary>
     /// Keycloak options

@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
         <RootNamespace>Teta.Packages.UoW.EfCore</RootNamespace>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Tetacom unit of work implementation</Title>
@@ -17,6 +16,7 @@ The Unit of Work NuGet package created by Tetacom company is a library that prov
         <PackageTags>Unit of Work, EfCore</PackageTags>
         <PackageReleaseNotes>Basic unit of work implementation with repository pattern,</PackageReleaseNotes>
         <Authors>Stepanov.N.O. Konyschev A.V.</Authors>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,8 +24,8 @@ The Unit of Work NuGet package created by Tetacom company is a library that prov
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="EFCore.BulkExtensions" Version="6.6.4" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
+      <PackageReference Include="EFCore.BulkExtensions" Version="7.0.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
     </ItemGroup>
 
 </Project>
