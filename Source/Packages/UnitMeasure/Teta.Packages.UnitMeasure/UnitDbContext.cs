@@ -46,7 +46,7 @@ namespace Teta.Packages.UnitMeasure
                 .WithMany()
                 .HasForeignKey(e => e.UnitGroupId)
                 .OnDelete(DeleteBehavior.Cascade);
-
+            
             modelBuilder.Entity<CalcUnit>()
                 .HasOne(cu => cu.Convertation)
                 .WithOne()

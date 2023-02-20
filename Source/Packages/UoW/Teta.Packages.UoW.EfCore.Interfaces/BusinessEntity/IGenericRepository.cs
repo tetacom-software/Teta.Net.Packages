@@ -1,6 +1,7 @@
 ﻿using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
@@ -8,9 +9,10 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
     /// <summary>
     /// Интерфейс репозитория с базовыми методами
     /// </summary>
-    public interface IGenericRepository<T, in TKey>
+    public interface IGenericRepository<T, in TKey, TContext>
         where TKey : struct
         where T : class, IBusinessEntity<TKey>, new()
+        where TContext : DbContext
     {
         /// <summary>
         /// Выполняет сохранение всех изменений в СУБД
