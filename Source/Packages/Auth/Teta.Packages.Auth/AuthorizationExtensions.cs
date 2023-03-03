@@ -158,7 +158,7 @@ namespace Teta.Packages.Auth
                     }
 
                     options.RequireHttpsMetadata = false;
-                    var cert = new X509Certificate2(Encoding.UTF8.GetBytes(kcOptions.PemCertificate));
+                    var cert = new X509Certificate2(Convert.FromBase64String(kcOptions.PemCertificate));
 
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
