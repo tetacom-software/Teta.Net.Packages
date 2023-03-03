@@ -14,7 +14,7 @@ Support KeyCloak Resource owner password flow authentication.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Base package with keycloak resource owner password flow authentication.</PackageReleaseNotes>
 	<Authors>Stepanov.N.O. Konyschev A.V.</Authors>
-	<Version>1.0.0</Version>
+	<Version>1.0.1</Version>
 	<Company>TETACOM</Company>
 	<PackageTags>Keycloak,Authentication,Authtorization</PackageTags>
   </PropertyGroup>
