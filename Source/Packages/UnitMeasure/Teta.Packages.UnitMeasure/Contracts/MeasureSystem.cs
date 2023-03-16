@@ -38,6 +38,6 @@ namespace Teta.Packages.UnitMeasure.Contracts
         /// <summary>
         /// Calc parameter link
         /// </summary>
-        public MeasureSystemCalcParameter[] MeasureSystemParameters { get; set; }
+        public List<MeasureSystemCalcParameter> MeasureSystemParameters { get; set; }
     }
 }
