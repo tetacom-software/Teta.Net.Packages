@@ -48,5 +48,10 @@ namespace Teta.Packages.Auth.Interfaces
         /// Entity has super user claim
         /// </summary>
         bool IsSuperUser { get; }
+
+        /// <summary>
+        /// Идентификаторы компаний пользователя
+        /// </summary>
+        public IEnumerable<int> CompanyIds { get; }
     }
 }

@@ -30,6 +30,7 @@ public class DummyUserContext:IUserContext
     public string DisplayName { get; } = "TestUser";
     public string Email { get; } = "TestUser@email.ru";
     public bool IsSuperUser { get; }
+    public IEnumerable<int> CompanyIds { get; }
     public int ContextCompanyId { get; }
     public IEnumerable<string> Roles => new[] { "ADMIN" };
     public UserData UserData { get; }

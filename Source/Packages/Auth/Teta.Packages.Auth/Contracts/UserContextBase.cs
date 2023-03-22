@@ -117,5 +117,14 @@ namespace Teta.Packages.Auth.Contracts
 
         /// <inheritdoc/>
         public bool IsSuperUser => ClaimsPrincipal.HasRole(TetaDefaultRoles.SuperUserRole);
+
+        /// <inheritdoc />
+        public IEnumerable<int> CompanyIds {
+            get
+            {
+                return ClaimsPrincipal.Claims
+                    .Where(c => c.Type == KcClaimTypesConstants.Company).Select(c=>Convert.ToInt32(c.Value));
+            }
+        }
     }
 }

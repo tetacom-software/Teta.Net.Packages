@@ -276,6 +276,9 @@
         <member name="P:Teta.Packages.Auth.Contracts.UserContextBase.IsSuperUser">
             <inheritdoc/>
         </member>
+        <member name="P:Teta.Packages.Auth.Contracts.UserContextBase.CompanyIds">
+            <inheritdoc />
+        </member>
         <member name="T:Teta.Packages.Auth.Implementation.KcAccessClient">
             <summary>
             KC access client implementation
@@ -371,6 +374,11 @@
         <member name="P:Teta.Packages.Auth.Interfaces.IUserContext.IsSuperUser">
             <summary>
             Entity has super user claim
+            </summary>
+        </member>
+        <member name="P:Teta.Packages.Auth.Interfaces.IUserContext.CompanyIds">
+            <summary>
+            Идентификаторы компаний пользователя
             </summary>
         </member>
         <member name="T:Teta.Packages.Auth.TetaAuthorizeAttribute">
