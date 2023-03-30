@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>annotations</Nullable>
+    <Title>S3 file service logic</Title>
+    <Description>Implemets file storage logic using S3 compatible storage</Description>
+    <Copyright>(с) Tetacom</Copyright>
+    <PackageProjectUrl>https://github.com/tetacom-software/Teta.Net.Packages</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tetacom-software/Teta.Net.Packages</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>.NET S3 </PackageTags>
+    <PackageReleaseNotes>Basic implementation of file storage service</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Core" Version="3.7.105.12" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.4" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.103.20" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Teta.Files.Contracts\Teta.Packages.Files.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
