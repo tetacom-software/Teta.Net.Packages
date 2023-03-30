@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Teta.Packages.Files.S3": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:61496;http://localhost:61497"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="EPPlus" Version="6.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Teta.Packages.Auth" Version="1.0.1" />
+    <PackageReference Include="UTF.Unknown" Version="2.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Teta.Extensions\Teta.Packages.Extensions.csproj" />
+    <ProjectReference Include="..\Teta.Files.Bll\Teta.Packages.Files.S3.csproj" />
+    <ProjectReference Include="..\Teta.Files.Contracts\Teta.Packages.Files.Contracts.csproj" />
+    <ProjectReference Include="..\Teta.Packages.Files.S3\Teta.Packages.Files.S3.csproj" />
+  </ItemGroup>
+
+</Project>
