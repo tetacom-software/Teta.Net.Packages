@@ -12,9 +12,9 @@ Support KeyCloak Resource owner password flow authentication.</Description>
     <PackageProjectUrl>https://github.com/tetacom-software/Teta.Net.Packages</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tetacom-software/Teta.Net.Packages</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>Base package with keycloak resource owner password flow authentication.</PackageReleaseNotes>
+    <PackageReleaseNotes>Update packages version</PackageReleaseNotes>
 	<Authors>Stepanov.N.O. Konyschev A.V.</Authors>
-	<Version>1.0.1</Version>
+	<Version>1.0.3</Version>
 	<Company>TETACOM</Company>
 	<PackageTags>Keycloak,Authentication,Authtorization</PackageTags>
   </PropertyGroup>
@@ -29,7 +29,7 @@ Support KeyCloak Resource owner password flow authentication.</Description>
 
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
