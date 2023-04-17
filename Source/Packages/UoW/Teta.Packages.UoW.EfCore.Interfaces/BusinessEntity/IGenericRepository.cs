@@ -49,7 +49,7 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
         /// Получить все доступные значения
         /// </summary>
         /// <returns>IQueryable queries</returns>
-        IQueryable<T> GetAll();
+        IQueryable<T> GetAll(bool asTrack = false);
 
         /// <summary>
         /// Получить все доступные значения в виде асинхронного перечисления
