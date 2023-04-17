@@ -132,9 +132,9 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/>
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAll(bool asTrack = false)
         {
-            return _wrappedEntity.GetAll();
+            return _wrappedEntity.GetAll(asTrack);
         }
 
         /// <inheritdoc/>

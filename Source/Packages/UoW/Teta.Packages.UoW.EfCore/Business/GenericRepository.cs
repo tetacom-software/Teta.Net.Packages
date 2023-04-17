@@ -46,9 +46,9 @@ namespace Teta.Packages.UoW.EfCore.Business
         }
 
         /// <inheritdoc/> 
-        public virtual IQueryable<T> GetAll()
+        public virtual IQueryable<T> GetAll(bool asTrack = false)
         {
-            return _dbSet.AsNoTracking();
+            return asTrack ? _dbSet : _dbSet.AsNoTracking();
         }
 
         /// <inheritdoc/> 
