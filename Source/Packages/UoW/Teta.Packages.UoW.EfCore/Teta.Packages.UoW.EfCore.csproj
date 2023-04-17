@@ -14,9 +14,9 @@ The Unit of Work NuGet package created by Tetacom company is a library that prov
         <RepositoryUrl>https://github.com/deadokman/Teta.Packages.NuGet</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>Unit of Work, EfCore</PackageTags>
-        <PackageReleaseNotes>Add in GetAll parametr asTrack (false by default). If true - return dbSet.</PackageReleaseNotes>
+        <PackageReleaseNotes>Update packages version</PackageReleaseNotes>
         <Authors>Stepanov.N.O. Konyschev A.V.</Authors>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,8 +24,8 @@ The Unit of Work NuGet package created by Tetacom company is a library that prov
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="EFCore.BulkExtensions" Version="7.0.1" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
+      <PackageReference Include="EFCore.BulkExtensions" Version="7.0.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     </ItemGroup>
 
 </Project>

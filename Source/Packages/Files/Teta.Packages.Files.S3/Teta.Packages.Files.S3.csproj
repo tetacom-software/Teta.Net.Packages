@@ -10,13 +10,14 @@
     <RepositoryUrl>https://github.com/tetacom-software/Teta.Net.Packages</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>.NET S3 </PackageTags>
-    <PackageReleaseNotes>Basic implementation of file storage service</PackageReleaseNotes>
+    <PackageReleaseNotes>Update packages version</PackageReleaseNotes>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.Core" Version="3.7.105.12" />
-    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.4" />
-    <PackageReference Include="AWSSDK.S3" Version="3.7.103.20" />
+    <PackageReference Include="AWSSDK.Core" Version="3.7.106.20" />
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.5" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.103.50" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
