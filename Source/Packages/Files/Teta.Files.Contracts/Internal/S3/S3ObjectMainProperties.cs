@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 
 namespace Teta.Packages.Files.Contracts.Internal.S3
 {

@@ -9,12 +9,10 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Authentication;
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Routing;
 using Teta.Packages.Auth.Contracts;
 using Teta.Packages.Auth.Interfaces;
 

@@ -7,7 +7,6 @@
 //  Authorization attribute, claims check
 // </summary>
 
-using System;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Teta.Packages.Auth
