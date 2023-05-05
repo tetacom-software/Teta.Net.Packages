@@ -7,8 +7,6 @@
 //   Additional user data
 // </summary>
 
-using System.Linq;
-
 namespace Teta.Packages.Auth.Configuration
 {
     /// <summary>

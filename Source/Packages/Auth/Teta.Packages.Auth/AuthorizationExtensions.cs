@@ -18,7 +18,6 @@ using Teta.Packages.Auth.Configuration;
 using Teta.Packages.Auth.Implementation;
 using Teta.Packages.Auth.Interfaces;
 using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Authentication;
 
