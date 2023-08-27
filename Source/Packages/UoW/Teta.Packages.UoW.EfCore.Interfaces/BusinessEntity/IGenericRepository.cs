@@ -11,7 +11,7 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
     /// </summary>
     public interface IGenericRepository<T, in TKey, TContext>
         where TKey : struct
-        where T : class, IBusinessEntity<TKey>, new()
+        where T : class, IBusinessEntity<TKey>
         where TContext : DbContext
     {
         /// <summary>
