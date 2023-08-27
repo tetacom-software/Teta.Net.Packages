@@ -17,7 +17,7 @@ namespace Teta.Packages.UoW.EfCore.Business
 
         public IGenericRepository<T, TKey, TContext> Create<T, TKey>()
             where TKey : struct
-            where T : class, IBusinessEntity<TKey>, new()
+            where T : class, IBusinessEntity<TKey>
         {
             return new GenericRepository<T, TKey, TContext>(_dbContext);
         }

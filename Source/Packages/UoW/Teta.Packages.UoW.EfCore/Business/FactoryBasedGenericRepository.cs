@@ -14,7 +14,7 @@ namespace Teta.Packages.UoW.EfCore.Business
     /// <typeparam name="TContext">Тип контекста</typeparam>
     public class FactoryBasedGenericRepository<T, TKey, TContext> : IGenericRepository<T, TKey, TContext>
         where TKey : struct
-        where T : class, IBusinessEntity<TKey>, new()
+        where T : class, IBusinessEntity<TKey>
         where TContext : DbContext
     {
         private readonly IGenericRepository<T, TKey, TContext> _wrappedEntity;

@@ -17,6 +17,6 @@ namespace Teta.Packages.UoW.EfCore.Interfaces.BusinessEntity
         /// <returns>Репозиторий для работы с типом объекта</returns>
         IGenericRepository<T, TKey, TContext> Create<T, TKey>()
             where TKey : struct
-            where T : class, IBusinessEntity<TKey>, new();
+            where T : class, IBusinessEntity<TKey>;
     }
 }
