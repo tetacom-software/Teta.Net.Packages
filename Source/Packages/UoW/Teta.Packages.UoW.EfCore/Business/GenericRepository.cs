@@ -13,7 +13,7 @@ namespace Teta.Packages.UoW.EfCore.Business
     /// </summary>
     public class GenericRepository<T, TKey, TContext> : IGenericRepository<T, TKey, TContext>
         where TKey : struct
-        where T : class, IBusinessEntity<TKey>, new()
+        where T : class, IBusinessEntity<TKey>
         where TContext : DbContext
     {
         private readonly DbSet<T> _dbSet;
