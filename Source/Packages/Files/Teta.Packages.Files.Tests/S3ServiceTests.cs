@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Security.Cryptography;
+using NUnit.Framework.Legacy;
 using Teta.Packages.Files.S3;
 using Teta.Packages.Files.S3.Interface;
 
@@ -19,7 +20,9 @@ namespace Teta.Packages.Files.Tests
     public class S3ServiceTests
     {
         private IServiceCollection _sc;
+#pragma warning disable NUnit1032
         private IServiceProvider _sp;
+#pragma warning restore NUnit1032
         private IConfiguration _config;
 
         private string _testBucketName = "t";
@@ -51,7 +54,7 @@ namespace Teta.Packages.Files.Tests
             var svc = _sp.GetService<IS3Service>();
 
             var res = svc.CheckBucketExistsAsync(_testBucketName).Result;
-            Assert.IsFalse(res);
+            ClassicAssert.IsFalse(res);
         }
 
 
@@ -64,7 +67,7 @@ namespace Teta.Packages.Files.Tests
             svc.CreateBucketWithVersioningAsync(_testBucketName).Wait();
 
             var res = svc.CheckBucketExistsAsync(_testBucketName).Result;
-            Assert.True(res);
+            ClassicAssert.True(res);
         }
 
         [Order(2)]
@@ -127,7 +130,7 @@ namespace Teta.Packages.Files.Tests
 
             objectMetdadata = svc.GetObjectMetadata(_testObjectKey, resp.VersionId, _testBucketName).Result;
 
-            Assert.IsTrue(objectMetdadata.Metadata.ContainsKey("somekey"));
+            ClassicAssert.IsTrue(objectMetdadata.Metadata.ContainsKey("somekey"));
             var newData = objectMetdadata.Metadata["somekey"];
             Assert.That(newData, Is.EqualTo(data)); ;
         }
@@ -149,7 +152,7 @@ namespace Teta.Packages.Files.Tests
 
             objectMetdadata = svc.GetObjectMetadata(_testObjectKey, bucketName: _testBucketName).Result;
 
-            Assert.IsTrue(objectMetdadata.Metadata.ContainsKey("somekey"));
+            ClassicAssert.IsTrue(objectMetdadata.Metadata.ContainsKey("somekey"));
             var newData = objectMetdadata.Metadata["somekey"];
             Assert.That(newData, Is.EqualTo(data));
         }

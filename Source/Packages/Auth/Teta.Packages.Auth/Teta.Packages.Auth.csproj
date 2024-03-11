@@ -14,7 +14,7 @@ Support KeyCloak Resource owner password flow authentication.</Description>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Update packages version</PackageReleaseNotes>
 	<Authors>Stepanov.N.O. Konyschev A.V.</Authors>
-	<Version>1.0.3</Version>
+	<Version>1.0.4</Version>
 	<Company>TETACOM</Company>
 	<PackageTags>Keycloak,Authentication,Authtorization</PackageTags>
   </PropertyGroup>
@@ -29,7 +29,7 @@ Support KeyCloak Resource owner password flow authentication.</Description>
 
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.16" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
