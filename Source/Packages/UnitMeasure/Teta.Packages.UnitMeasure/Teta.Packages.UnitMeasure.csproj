@@ -14,7 +14,7 @@
         <PackageTags>EF core, unit measure</PackageTags>
         <PackageReleaseNotes>Basic RPN implementation</PackageReleaseNotes>
         <Authors>Stepanov.N.O. Konyschev A.V. Kurtse A.P.</Authors>
-        <Version>1.0.2</Version>
+        <Version>1.0.3</Version>
     </PropertyGroup>
 
     <ItemGroup>
